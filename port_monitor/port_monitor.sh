@@ -2,17 +2,16 @@
 
 E_BADARGS=65
 
-if [ ! -n "$1" ]
+if [ ! -n "$2" ]
 then
-  echo "Usage: `basename $0` domain.com"
+  echo "Usage: `basename $0` domain.com port1 port2 ..."
   exit $E_BADARGS
 fi 
 
-
 host=$1
 shift
+
 for port in "$@" 
-#for port in 80 25 
 do
   if netcat -z $host $port
   then
